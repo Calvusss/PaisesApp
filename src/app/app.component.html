@@ -1,9 +1,11 @@
-<h1> Calvus rules </h1>
+<div class="row container mt-3">
 
-<app-por-capital></app-por-capital>
+    <div class="col-3">
+        <app-sidebar></app-sidebar>
+    </div>
 
-<app-por-pais></app-por-pais>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
 
-<app-por-region></app-por-region>
-
-<app-ver-pais></app-ver-pais>
+</div>

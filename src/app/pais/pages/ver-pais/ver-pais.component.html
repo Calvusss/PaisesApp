@@ -1,1 +1,55 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1> País: <small>{{pais.name.common}}</small></h1>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-4">
+            <h3> Bandera </h3>
+            <img [src]="pais.flags.png" class="img-thumbnail">
+        </div>
+
+        <div class="col-4">
+            <h3> Información </h3>
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong> Capital: </strong> {{pais.capital}}
+                </li>
+                <li class="list-group-item">
+                    <strong> Región: </strong> {{pais.region}}<small> ({{pais.subregion}})</small>
+                </li>
+                <li class="list-group-item">
+                    <strong> Poblacion: </strong> {{pais.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong> Área: </strong> {{pais.area | number}} km<sup>2</sup>
+                </li>
+                <li class="list-group-item">
+                    <strong> Código: </strong> {{pais.cca2}}
+                </li>
+            </ul>
+        </div>
+
+        <h3> Traducciones </h3>
+        <div class="row">
+            <div *ngFor="let key of ['ara','ces','cym','deu','est','fin','fra','hrv','hun','ita','jpn','kor','nld','per','pol','por','rus','slk','spa','swe','urd','zho']"
+                class="col">
+                <span class="badge bg-primary mr-1"> {{pais.translations[key].official}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <pre class="mt-5">
+        <strong>{{pais | json }}</strong>
+    </pre> -->
+
+</ng-template>
